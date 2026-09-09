@@ -4,7 +4,7 @@
 # A microscopic traffic simulation: a handful of simulated players, each
 # driven by a tiny RECTGTN-style plan/execute/replan loop, generating real
 # QUIC wire traffic against a running picoquic_fanout_server. This is not a
-# taskweft integration - taskweft (github.com/taskweft/taskweft) is a
+# taskweft integration - taskweft (github.com/V-Sekai-fire/interactor-taskweft) is a
 # separate C++20/NIF planner that isn't vendored into this repo, and pulling
 # it in for a tiny local test would be a bigger dependency than this test
 # needs (Gall's Law: prove the small thing first). What this script borrows
