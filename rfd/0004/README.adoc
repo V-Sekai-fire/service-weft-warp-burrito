@@ -30,12 +30,12 @@ undecided as RFD 3 left it.
 Cloned directly from GitHub (`gh` + `git clone`, not the API) and
 copied into this repo as two sibling Mix projects:
 
-* `taskweft/` - formerly `github.com/taskweft/taskweft`: the HTN
+* `taskweft/` - formerly `github.com/V-Sekai-fire/taskweft`: the HTN
   planner application itself, including its own bundled MCP server
   (`taskweft mcp [--http [--port N]]`, per its README) - this is what
   makes the migration satisfy "with mcp" without needing the separate
   `taskweft/mcp` or `taskweft/deploy` repos.
-* `taskweft_nif/` - formerly `github.com/taskweft/nif`: the native
+* `taskweft_nif/` - formerly `github.com/V-Sekai-fire/nif`: the native
   C++20 HTN planner + HRR NIF `taskweft/taskweft` depends on.
 
 `taskweft/mix.exs`'s dependency on `taskweft_nif` was changed from a
