@@ -1,7 +1,7 @@
 defmodule Taskweft.NIF.MixProject do
   use Mix.Project
 
-  @version "0.2.0-dev.16"
+  @version "0.2.0-dev.20"
 
   def project do
     [
@@ -13,7 +13,7 @@ defmodule Taskweft.NIF.MixProject do
       dialyzer: [plt_add_apps: [:mix]],
       description: "C++20 HTN planner NIF (RECTGTN model) + HRR for Elixir",
       package: package(),
-      source_url: "https://github.com/V-Sekai-fire/nif"
+      source_url: "https://github.com/taskweft/nif"
     ] ++ make_options()
   end
 
@@ -21,7 +21,7 @@ defmodule Taskweft.NIF.MixProject do
     [
       files: ~w(lib c_src standalone Makefile Makefile.win mix.exs LICENSE*),
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/V-Sekai-fire/nif"}
+      links: %{"GitHub" => "https://github.com/taskweft/nif"}
     ]
   end
 

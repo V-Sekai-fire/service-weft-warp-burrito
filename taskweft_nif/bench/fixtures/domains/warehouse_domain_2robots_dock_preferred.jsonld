@@ -4,33 +4,38 @@
     "domain": "vsekai:planning/domain/"
   },
   "@type": "domain:Definition",
-  "name": "warehouse_delivery_domain",
+  "name": "warehouse_delivery_domain_2robots_dock_preferred",
   "variables": [
     {
       "name": "at",
       "init": {
         "robot_1": "dock",
+        "robot_2": "dock",
         "package_1": "storage",
-        "package_2": "storage"
+        "package_2": "storage",
+        "package_3": "storage"
       }
     },
     {
       "name": "carrying",
       "init": {
-        "robot_1": null
+        "robot_1": null,
+        "robot_2": null
       }
     },
     {
       "name": "delivered",
       "init": {
         "package_1": false,
-        "package_2": false
+        "package_2": false,
+        "package_3": false
       }
     },
     {
       "name": "charged",
       "init": {
-        "robot_1": false
+        "robot_1": false,
+        "robot_2": false
       }
     }
   ],
@@ -437,7 +442,51 @@
           "subtasks": []
         },
         {
-          "name": "deliver_now",
+          "name": "deliver_robot1_when_at_dock",
+          "check": [
+            {
+              "eval": {
+                "type": "math/eq",
+                "a": {
+                  "type": "pointer/get",
+                  "pointer": "/at/robot_1"
+                },
+                "b": "dock"
+              }
+            }
+          ],
+          "subtasks": [
+            [
+              "deliver_pkg",
+              "robot_1",
+              "{pkg}"
+            ]
+          ]
+        },
+        {
+          "name": "deliver_robot2_when_at_dock",
+          "check": [
+            {
+              "eval": {
+                "type": "math/eq",
+                "a": {
+                  "type": "pointer/get",
+                  "pointer": "/at/robot_2"
+                },
+                "b": "dock"
+              }
+            }
+          ],
+          "subtasks": [
+            [
+              "deliver_pkg",
+              "robot_2",
+              "{pkg}"
+            ]
+          ]
+        },
+        {
+          "name": "deliver_fallback_robot1",
           "subtasks": [
             [
               "deliver_pkg",
@@ -452,6 +501,11 @@
   "capabilities": {
     "entities": {
       "robot_1": [
+        "navigate",
+        "manipulate",
+        "dock_access"
+      ],
+      "robot_2": [
         "navigate",
         "manipulate",
         "dock_access"
