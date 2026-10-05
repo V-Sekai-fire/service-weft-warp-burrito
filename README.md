@@ -1,20 +1,20 @@
-# WeftWarpBurrito
+# service-weft-warp-burrito
 
-**TODO: Add description**
+An Elixir host that runs a sandboxed RISC-V guest through a NIF, one supervised process per guest machine, released as a single executable.
 
-## Installation
+## What it is for
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `weft_warp_burrito` to your list of dependencies in `mix.exs`:
+Each guest call is one of a fixed set of named capabilities, run under a fuel budget the emulator enforces, and a process serves one call at a time. The repository also carries the hierarchical task planner and its NIF as subtrees and a vendored actor runtime. Its own design records are in `rfd/`, and RFD 2304 in manuals-weftspun covers the planner copy.
 
-```elixir
-def deps do
-  [
-    {:weft_warp_burrito, "~> 0.1.0"}
-  ]
-end
+## Build and run
+
+The NIF and the guest build through `elixir_make`, with the RISC-V GCC toolchain and `mingw32-make` on the path:
+
+```sh
+mix deps.get
+mix release
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/weft_warp_burrito>.
+## Licence
+
+MIT; see LICENSE. Vendored code keeps its own licence.
